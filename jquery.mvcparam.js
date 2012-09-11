@@ -1,14 +1,18 @@
 ﻿// MVC param serialization
 (function ($) {
+    $.fn.mvcserialize = function() {
+        return $.mvcparam( this.serializeArray() );
+    };
+
     // changed: no 'traditional' argument
     $.mvcparam = function (a) {
         var s = [],
-		add = function (key, value) {
-		    // If value is a function, invoke it and return its value
-		    value = $.isFunction(value) ? value() : value;
-		    // changed: no value instead of 'null'
-		    s[s.length] = encodeURIComponent(key) + "=" + (value ? encodeURIComponent(value) : '');
-		};
+        add = function (key, value) {
+            // If value is a function, invoke it and return its value
+            value = $.isFunction(value) ? value() : value;
+            // changed: no value instead of 'null'
+            s[s.length] = encodeURIComponent(key) + "=" + (value ? encodeURIComponent(value) : '');
+        };
 
         // If a jQuery element array was passed in, assume that it is an array of form elements.
         if ($.isArray(a) || (a.jquery && !$.isPlainObject(a))) {
