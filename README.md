@@ -18,7 +18,7 @@ var params = {
 var queryString = $.mvcparam(params);
 ```
 
-or, use it to serialize your <form> tags:
+or, use it to serialize your form tags:
 ```js
 var $form = $('#mvc-form');
 var queryString = $form.mvcserialize();
